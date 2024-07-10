@@ -1,4 +1,4 @@
-import TextInputExample from "@/components/TextInputExample";
+import CheckModal from "@/components/CheckModal";
 import { Text, View } from "react-native";
 
 export default function Index() {
@@ -10,8 +10,8 @@ export default function Index() {
         alignItems: "center",
       }}
     >
-      <Text>Check TextInputs</Text>
-      <TextInputExample></TextInputExample>
+      <Text>Check Modal</Text>
+      <CheckModal></CheckModal>
     </View>
   );
 }
