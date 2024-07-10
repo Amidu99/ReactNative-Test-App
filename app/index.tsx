@@ -1,3 +1,4 @@
+import DisplayAnImage from "@/components/DisplayAnImage";
 import { Text, View } from "react-native";
 
 export default function Index() {
@@ -9,7 +10,8 @@ export default function Index() {
         alignItems: "center",
       }}
     >
-      <Text>Start Development</Text>
+      <Text>Check Images</Text>
+      <DisplayAnImage></DisplayAnImage>
     </View>
   );
 }
