@@ -10,7 +10,8 @@ export default function Index() {
         alignItems: "center",
       }}
     >
-        <Text>Check Tab-Navigation</Text>
+        <Text>Check Tab-Navigation &</Text>
+        <Text>Flatlist-selectable</Text>
         <Button
         title="Check Details"
         color="#f194ff"

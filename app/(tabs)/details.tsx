@@ -1,15 +1,19 @@
-import { router } from 'expo-router';
+import React, {useState} from 'react';
 import {
-  Button,
-  SafeAreaView,
-  View,
   FlatList,
+  SafeAreaView,
+  StatusBar,
   StyleSheet,
   Text,
-  StatusBar,
+  TouchableOpacity,
 } from 'react-native';
 
-const DATA = [
+type ItemData = {
+  id: string;
+  title: string;
+};
+
+const DATA: ItemData[] = [
   {
     id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
     title: 'First Item',
@@ -24,34 +28,62 @@ const DATA = [
   },
 ];
 
-export default function DetailsScreen() {
+type ItemProps = {
+  item: ItemData;
+  onPress: () => void;
+  backgroundColor: string;
+  textColor: string;
+};
+
+const Item = ({item, onPress, backgroundColor, textColor}: ItemProps) => (
+  <TouchableOpacity onPress={onPress} style={[styles.item, {backgroundColor}]}>
+    <Text style={[styles.title, {color: textColor}]}>{item.title}</Text>
+  </TouchableOpacity>
+);
+
+const AppDetailsScreen = () => {
+  const [selectedId, setSelectedId] = useState<string>();
+
+  const renderItem = ({item}: {item: ItemData}) => {
+    const backgroundColor = item.id === selectedId ? '#6e3b6e' : '#f9c2ff';
+    const color = item.id === selectedId ? 'white' : 'black';
+
+    return (
+      <Item
+        item={item}
+        onPress={() => setSelectedId(item.id)}
+        backgroundColor={backgroundColor}
+        textColor={color}
+      />
+    );
+  };
+
   return (
-    <View style={styles.container}>
-      <Text>Details</Text>
+    <SafeAreaView style={styles.container}>
+      <Text>-Selectable Flatlist-</Text>
       <FlatList
         data={DATA}
-        renderItem={({item}) => <Text style={styles.item}>{item.title}</Text>}
+        renderItem={renderItem}
         keyExtractor={item => item.id}
+        extraData={selectedId}
       />
-      <Button
-        title="Back to Home"
-        color="#f194ff"
-        onPress={() => router.back()}
-      />
-    </View>
+    </SafeAreaView>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    marginTop: StatusBar.currentHeight || 0,
   },
   item: {
-    backgroundColor: '#f9c2ff',
     padding: 20,
     marginVertical: 8,
     marginHorizontal: 16,
   },
+  title: {
+    fontSize: 32,
+  },
 });
+
+export default AppDetailsScreen;
