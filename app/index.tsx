@@ -1,5 +1,6 @@
 import CheckModal from "@/components/CheckModal";
 import { Text, View } from "react-native";
+import { Link } from 'expo-router';
 
 export default function Index() {
   return (
@@ -10,8 +11,8 @@ export default function Index() {
         alignItems: "center",
       }}
     >
-      <Text>Check Modal</Text>
-      <CheckModal></CheckModal>
+      <Text>Check File-based routing</Text>
+      <Link href="/details">View details</Link>
     </View>
   );
 }
