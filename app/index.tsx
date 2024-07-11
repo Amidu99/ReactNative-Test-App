@@ -1,6 +1,5 @@
-import CheckModal from "@/components/CheckModal";
-import { Text, View } from "react-native";
-import { Link } from 'expo-router';
+import {Button, View, Text, Alert} from 'react-native';
+import { router } from 'expo-router';
 
 export default function Index() {
   return (
@@ -11,8 +10,12 @@ export default function Index() {
         alignItems: "center",
       }}
     >
-      <Text>Check File-based routing</Text>
-      <Link href="/details">View details</Link>
+        <Text>Check File-based routing with button</Text>
+        <Button
+        title="Check Details"
+        color="#f194ff"
+        onPress={() => router.push('details')}
+      />
     </View>
   );
 }
