@@ -10,7 +10,7 @@ export default function Index() {
         alignItems: "center",
       }}
     >
-        <Text>Check File-based routing with button</Text>
+        <Text>Check Tab-Navigation</Text>
         <Button
         title="Check Details"
         color="#f194ff"
