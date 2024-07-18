@@ -1,7 +1,11 @@
-import {Button, View, Text, Alert} from 'react-native';
+import React from 'react';
+import {Button, View, StyleSheet, Text, TextInput} from 'react-native';
 import { router } from 'expo-router';
 
 export default function Index() {
+  const [email, onChangeEmail] = React.useState('user@sample.com');
+  const [name, onChangeName] = React.useState('');
+  
   return (
     <View
       style={{
@@ -10,6 +14,17 @@ export default function Index() {
         alignItems: "center",
       }}
     >
+      <TextInput
+        style={styles.input}
+        onChangeText={onChangeEmail}
+        value={email}
+      />
+      <TextInput
+        style={styles.input}
+        onChangeText={onChangeName}
+        value={name}
+        placeholder="enter your name"
+      />
         <Text>Check Tab-Navigation &</Text>
         <Text>Flatlist-selectable</Text>
         <Button
@@ -20,3 +35,11 @@ export default function Index() {
     </View>
   );
 }
+const styles = StyleSheet.create({
+  input: {
+    height: 40,
+    margin: 12,
+    borderWidth: 1,
+    padding: 10,
+  },
+});
