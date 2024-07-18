@@ -7,6 +7,7 @@ export default function TabLayout() {
       <Tabs.Screen name="details" options={{headerStyle: {backgroundColor: 'red'}}}/>
       <Tabs.Screen name="camera" options={{headerStyle: {backgroundColor: 'green'}}}/>
       <Tabs.Screen name="testCamera" options={{headerStyle: {backgroundColor: 'yellow'}}}/>
+      <Tabs.Screen name="registerForm" options={{headerStyle: {backgroundColor: 'gray'}}}/>
     </Tabs>
   );
 }
