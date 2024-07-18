@@ -1,10 +1,11 @@
-import React from 'react';
 import {Button, View, StyleSheet, Text, TextInput} from 'react-native';
 import { router } from 'expo-router';
+import React,{useState} from 'react';
 
 export default function Index() {
-  const [email, onChangeEmail] = React.useState('user@sample.com');
-  const [name, onChangeName] = React.useState('');
+  const [email, onChangeEmail] = useState('user@sample.com');
+  const [name, onChangeName] = useState('');
+  const [stateValue, changeState] = useState(0);
   
   return (
     <View
@@ -31,6 +32,18 @@ export default function Index() {
         title="Check Details"
         color="#f194ff"
         onPress={() => router.push('details')}
+        />
+      <Text>Check use state</Text>
+      <Text>{stateValue}</Text>
+      <Button
+        title="+"
+        color="#f194ff"
+        onPress={() => {changeState(stateValue+1)}}
+      />
+      <Button
+        title="-"
+        color="#f194ff"
+        onPress={() => {changeState(stateValue-1)}}
       />
     </View>
   );
